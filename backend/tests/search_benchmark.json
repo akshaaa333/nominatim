@@ -1,0 +1,43 @@
+{
+    "category_searches": [
+        "Hospital",
+        "Restaurant",
+        "ATM",
+        "Fuel Station",
+        "Mall",
+        "School",
+        "College",
+        "Temple",
+        "Bus Stop",
+        "Railway Station",
+        "Airport",
+        "Pharmacy",
+        "Clinic",
+        "Hotel",
+        "Cafe",
+        "Supermarket"
+    ],
+    "exact_places": [
+        "Apollo",
+        "Apollo Hospital",
+        "Phoenix Marketcity",
+        "Anna University",
+        "VIT",
+        "Marina Beach",
+        "Chennai Airport",
+        "Express Avenue",
+        "VR Mall"
+    ],
+    "admin_areas": [
+        "Velachery",
+        "Tambaram",
+        "Chennai",
+        "Coimbatore",
+        "Madurai"
+    ],
+    "pincodes": [
+        "600042",
+        "600001",
+        "641001"
+    ]
+}

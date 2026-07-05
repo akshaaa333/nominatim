@@ -1,0 +1,304 @@
+=======================================================
+Query: Apollo
+=======================================================
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key = 'apollo';
+                                                             QUERY PLAN                                                              
+-------------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=94.80..98.81 rows=1 width=156) (actual time=0.826..1.445 rows=4 loops=1)
+   Recheck Cond: ((search_key)::text = 'apollo'::text)
+   Rows Removed by Index Recheck: 162
+   Heap Blocks: exact=143
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..94.80 rows=1 width=0) (actual time=0.729..0.730 rows=166 loops=1)
+         Index Cond: ((search_key)::text = 'apollo'::text)
+ Planning Time: 33.786 ms
+ Execution Time: 1.728 ms
+(8 rows)
+
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key LIKE 'apollo%';
+                                                              QUERY PLAN                                                               
+---------------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=82.45..509.33 rows=117 width=156) (actual time=0.434..0.803 rows=166 loops=1)
+   Recheck Cond: ((search_key)::text ~~ 'apollo%'::text)
+   Heap Blocks: exact=143
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..82.43 rows=117 width=0) (actual time=0.396..0.397 rows=166 loops=1)
+         Index Cond: ((search_key)::text ~~ 'apollo%'::text)
+ Planning Time: 1.719 ms
+ Execution Time: 0.976 ms
+(7 rows)
+
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key ILIKE '%apollo%';
+                                                              QUERY PLAN                                                               
+---------------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=56.55..483.43 rows=117 width=156) (actual time=0.178..0.655 rows=166 loops=1)
+   Recheck Cond: ((search_key)::text ~~* '%apollo%'::text)
+   Heap Blocks: exact=143
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..56.52 rows=117 width=0) (actual time=0.142..0.142 rows=166 loops=1)
+         Index Cond: ((search_key)::text ~~* '%apollo%'::text)
+ Planning Time: 1.456 ms
+ Execution Time: 0.777 ms
+(7 rows)
+
+
+
+=======================================================
+Query: Apollo Hospital
+=======================================================
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key = 'apollo hospital';
+                                                             QUERY PLAN                                                              
+-------------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=215.50..219.51 rows=1 width=156) (actual time=4.861..4.947 rows=7 loops=1)
+   Recheck Cond: ((search_key)::text = 'apollo hospital'::text)
+   Rows Removed by Index Recheck: 9
+   Heap Blocks: exact=14
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..215.50 rows=1 width=0) (actual time=4.790..4.791 rows=16 loops=1)
+         Index Cond: ((search_key)::text = 'apollo hospital'::text)
+ Planning Time: 2.946 ms
+ Execution Time: 5.647 ms
+(8 rows)
+
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key LIKE 'apollo hospital%';
+                                                             QUERY PLAN                                                              
+-------------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=202.56..222.25 rows=5 width=156) (actual time=0.855..0.896 rows=10 loops=1)
+   Recheck Cond: ((search_key)::text ~~ 'apollo hospital%'::text)
+   Rows Removed by Index Recheck: 12
+   Heap Blocks: exact=20
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..202.56 rows=5 width=0) (actual time=0.833..0.834 rows=22 loops=1)
+         Index Cond: ((search_key)::text ~~ 'apollo hospital%'::text)
+ Planning Time: 0.985 ms
+ Execution Time: 1.022 ms
+(8 rows)
+
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key ILIKE '%apollo%' AND search_key ILIKE '%hospital%';
+                                                              QUERY PLAN                                                              
+--------------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=133.75..192.02 rows=15 width=156) (actual time=1.006..1.144 rows=22 loops=1)
+   Recheck Cond: (((search_key)::text ~~* '%apollo%'::text) AND ((search_key)::text ~~* '%hospital%'::text))
+   Heap Blocks: exact=20
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..133.75 rows=15 width=0) (actual time=0.962..0.963 rows=22 loops=1)
+         Index Cond: (((search_key)::text ~~* '%apollo%'::text) AND ((search_key)::text ~~* '%hospital%'::text))
+ Planning Time: 2.445 ms
+ Execution Time: 1.370 ms
+(7 rows)
+
+
+
+=======================================================
+Query: Hospital
+=======================================================
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE category = 'Hospital';
+                                                         QUERY PLAN                                                          
+-----------------------------------------------------------------------------------------------------------------------------
+ Index Scan using ix_places_category on places  (cost=0.41..8.40 rows=1 width=156) (actual time=0.086..0.086 rows=0 loops=1)
+   Index Cond: ((category)::text = 'Hospital'::text)
+ Planning Time: 0.551 ms
+ Execution Time: 0.115 ms
+(4 rows)
+
+
+
+=======================================================
+Query: Restaurant
+=======================================================
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE category = 'Restaurant';
+                                                         QUERY PLAN                                                          
+-----------------------------------------------------------------------------------------------------------------------------
+ Index Scan using ix_places_category on places  (cost=0.41..8.40 rows=1 width=156) (actual time=0.029..0.030 rows=0 loops=1)
+   Index Cond: ((category)::text = 'Restaurant'::text)
+ Planning Time: 0.549 ms
+ Execution Time: 0.059 ms
+(4 rows)
+
+
+
+=======================================================
+Query: Phoenix
+=======================================================
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key = 'phoenix';
+                                                             QUERY PLAN                                                             
+------------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=107.75..111.76 rows=1 width=156) (actual time=0.213..0.220 rows=2 loops=1)
+   Recheck Cond: ((search_key)::text = 'phoenix'::text)
+   Rows Removed by Index Recheck: 3
+   Heap Blocks: exact=5
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..107.75 rows=1 width=0) (actual time=0.178..0.178 rows=5 loops=1)
+         Index Cond: ((search_key)::text = 'phoenix'::text)
+ Planning Time: 1.266 ms
+ Execution Time: 0.327 ms
+(8 rows)
+
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key LIKE 'phoenix%';
+                                                            QUERY PLAN                                                             
+-----------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=94.82..114.51 rows=5 width=156) (actual time=0.150..0.168 rows=5 loops=1)
+   Recheck Cond: ((search_key)::text ~~ 'phoenix%'::text)
+   Heap Blocks: exact=5
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..94.82 rows=5 width=0) (actual time=0.133..0.133 rows=5 loops=1)
+         Index Cond: ((search_key)::text ~~ 'phoenix%'::text)
+ Planning Time: 1.286 ms
+ Execution Time: 0.270 ms
+(7 rows)
+
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key ILIKE '%phoenix%';
+                                                            QUERY PLAN                                                             
+-----------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=68.91..88.60 rows=5 width=156) (actual time=0.114..0.148 rows=5 loops=1)
+   Recheck Cond: ((search_key)::text ~~* '%phoenix%'::text)
+   Heap Blocks: exact=5
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..68.91 rows=5 width=0) (actual time=0.089..0.089 rows=5 loops=1)
+         Index Cond: ((search_key)::text ~~* '%phoenix%'::text)
+ Planning Time: 1.722 ms
+ Execution Time: 0.298 ms
+(7 rows)
+
+
+
+=======================================================
+Query: Marina Beach
+=======================================================
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key = 'marina beach';
+                                                             QUERY PLAN                                                             
+------------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=176.64..180.65 rows=1 width=156) (actual time=0.816..0.831 rows=1 loops=1)
+   Recheck Cond: ((search_key)::text = 'marina beach'::text)
+   Rows Removed by Index Recheck: 2
+   Heap Blocks: exact=3
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..176.64 rows=1 width=0) (actual time=0.798..0.799 rows=3 loops=1)
+         Index Cond: ((search_key)::text = 'marina beach'::text)
+ Planning Time: 1.202 ms
+ Execution Time: 0.923 ms
+(8 rows)
+
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key LIKE 'marina beach%';
+                                                             QUERY PLAN                                                             
+------------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=163.71..183.39 rows=5 width=156) (actual time=0.907..0.934 rows=3 loops=1)
+   Recheck Cond: ((search_key)::text ~~ 'marina beach%'::text)
+   Rows Removed by Index Recheck: 1
+   Heap Blocks: exact=4
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..163.71 rows=5 width=0) (actual time=0.882..0.883 rows=4 loops=1)
+         Index Cond: ((search_key)::text ~~ 'marina beach%'::text)
+ Planning Time: 1.720 ms
+ Execution Time: 1.084 ms
+(8 rows)
+
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key ILIKE '%marina%' AND search_key ILIKE '%beach%';
+                                                            QUERY PLAN                                                             
+-----------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=94.81..98.83 rows=1 width=156) (actual time=0.292..0.312 rows=4 loops=1)
+   Recheck Cond: (((search_key)::text ~~* '%marina%'::text) AND ((search_key)::text ~~* '%beach%'::text))
+   Heap Blocks: exact=4
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..94.81 rows=1 width=0) (actual time=0.273..0.273 rows=4 loops=1)
+         Index Cond: (((search_key)::text ~~* '%marina%'::text) AND ((search_key)::text ~~* '%beach%'::text))
+ Planning Time: 1.371 ms
+ Execution Time: 0.427 ms
+(7 rows)
+
+
+
+=======================================================
+Query: Anna University
+=======================================================
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key = 'anna university';
+                                                             QUERY PLAN                                                             
+------------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=215.50..219.51 rows=1 width=156) (actual time=0.744..0.773 rows=3 loops=1)
+   Recheck Cond: ((search_key)::text = 'anna university'::text)
+   Rows Removed by Index Recheck: 3
+   Heap Blocks: exact=6
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..215.50 rows=1 width=0) (actual time=0.719..0.719 rows=6 loops=1)
+         Index Cond: ((search_key)::text = 'anna university'::text)
+ Planning Time: 0.935 ms
+ Execution Time: 0.860 ms
+(8 rows)
+
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key LIKE 'anna university%';
+                                                             QUERY PLAN                                                             
+------------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=202.56..222.25 rows=5 width=156) (actual time=0.731..0.767 rows=6 loops=1)
+   Recheck Cond: ((search_key)::text ~~ 'anna university%'::text)
+   Heap Blocks: exact=6
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..202.56 rows=5 width=0) (actual time=0.710..0.710 rows=6 loops=1)
+         Index Cond: ((search_key)::text ~~ 'anna university%'::text)
+ Planning Time: 1.412 ms
+ Execution Time: 0.967 ms
+(7 rows)
+
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE search_key ILIKE '%anna%' AND search_key ILIKE '%university%';
+                                                             QUERY PLAN                                                             
+------------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=133.68..137.69 rows=1 width=156) (actual time=0.315..0.356 rows=7 loops=1)
+   Recheck Cond: (((search_key)::text ~~* '%anna%'::text) AND ((search_key)::text ~~* '%university%'::text))
+   Heap Blocks: exact=7
+   ->  Bitmap Index Scan on ix_places_search_key_trgm  (cost=0.00..133.68 rows=1 width=0) (actual time=0.290..0.291 rows=7 loops=1)
+         Index Cond: (((search_key)::text ~~* '%anna%'::text) AND ((search_key)::text ~~* '%university%'::text))
+ Planning Time: 1.341 ms
+ Execution Time: 0.476 ms
+(7 rows)
+
+
+
+=======================================================
+Query: Velachery
+=======================================================
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE district = 'Velachery' OR district = 'Velachery' OR state = 'Velachery' OR state = 'Velachery';
+                                                                                 QUERY PLAN                                                                                 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Seq Scan on places  (cost=0.00..9124.98 rows=7 width=156) (actual time=1.050..18.727 rows=2 loops=1)
+   Filter: (((district)::text = 'Velachery'::text) OR ((district)::text = 'Velachery'::text) OR ((state)::text = 'Velachery'::text) OR ((state)::text = 'Velachery'::text))
+   Rows Removed by Filter: 58847
+ Planning Time: 0.670 ms
+ Execution Time: 18.760 ms
+(5 rows)
+
+
+
+=======================================================
+Query: Tambaram
+=======================================================
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE district = 'Tambaram' OR district = 'Tambaram' OR state = 'Tambaram' OR state = 'Tambaram';
+                                                                               QUERY PLAN                                                                               
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Seq Scan on places  (cost=0.00..9124.98 rows=7 width=156) (actual time=9.464..14.292 rows=1 loops=1)
+   Filter: (((district)::text = 'Tambaram'::text) OR ((district)::text = 'Tambaram'::text) OR ((state)::text = 'Tambaram'::text) OR ((state)::text = 'Tambaram'::text))
+   Rows Removed by Filter: 58848
+ Planning Time: 0.583 ms
+ Execution Time: 14.327 ms
+(5 rows)
+
+
+
+=======================================================
+Query: 600042
+=======================================================
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE pincode = '600042';
+                                                         QUERY PLAN                                                         
+----------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=4.41..62.64 rows=15 width=156) (actual time=0.049..0.379 rows=58 loops=1)
+   Recheck Cond: ((pincode)::text = '600042'::text)
+   Heap Blocks: exact=45
+   ->  Bitmap Index Scan on ix_places_pincode  (cost=0.00..4.40 rows=15 width=0) (actual time=0.032..0.032 rows=58 loops=1)
+         Index Cond: ((pincode)::text = '600042'::text)
+ Planning Time: 0.574 ms
+ Execution Time: 0.420 ms
+(7 rows)
+
+
+
+=======================================================
+Query: 641001
+=======================================================
+STAGE SQL: EXPLAIN ANALYZE SELECT * FROM goride.places WHERE pincode = '641001';
+                                                         QUERY PLAN                                                         
+----------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on places  (cost=4.41..62.64 rows=15 width=156) (actual time=0.052..0.178 rows=18 loops=1)
+   Recheck Cond: ((pincode)::text = '641001'::text)
+   Heap Blocks: exact=13
+   ->  Bitmap Index Scan on ix_places_pincode  (cost=0.00..4.40 rows=15 width=0) (actual time=0.036..0.036 rows=18 loops=1)
+         Index Cond: ((pincode)::text = '641001'::text)
+ Planning Time: 0.684 ms
+ Execution Time: 0.223 ms
+(7 rows)
+
+
+

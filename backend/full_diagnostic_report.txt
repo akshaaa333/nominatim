@@ -1,0 +1,37 @@
+********************************************************************************\nDIAGNOSTIC TRACE SCRIPT STARTING\n********************************************************************************
+\n================================================================================\nExecuting Query: 'Apollo Hospital'\n================================================================================
+\nAPI RESPONSE: Returned 56 items.
+First 10 IDs: [295066, 315783, 315149, 294560, 294285, 291977, 295590, 272505, 294763, 295252]
+First 10 Names: ['Apollo Hospital', 'Apollo Hospital', 'Apollo Hospital', 'Apollo Hospital', 'Apollo Hospital', 'Apollo Hospital', 'Apollo Hospital', 'Apollo Hospitals, Tondiarpet', 'Apollo Hospitals', 'Apollo Hospitals']
+\n================================================================================\nExecuting Query: 'Hospital'\n================================================================================
+\nAPI RESPONSE: Returned 109 items.
+First 10 IDs: [314318, 314435, 314441, 314725, 314372, 314739, 314510, 315195, 315336, 315337]
+First 10 Names: ['Rajiv Gandhi Government General Hospital', 'எழும்பூர் அரசு மருத்துவமனை', 'Egmore Eye Hospital', 'Stanley Medical College and Hospital', 'Stanley Medical College and Hospital', 'Madras Pinjrapole Veterinary Home', 'ESI Hospital', 'Prashanth Hospitals', 'Agarwal Eye Hospital', 'Aswene Soundarya Hospital']
+\n================================================================================\nExecuting Query: 'Restaurant'\n================================================================================
+\nAPI RESPONSE: Returned 109 items.
+First 10 IDs: [311366, 311375, 311604, 311566, 311648, 311730, 311740, 311737, 311733, 311732]
+First 10 Names: ['Khalids biriyani', 'Annai Bhavan', 'A2B', 'திருமலை பவன் உயர்தர அசைவ உணவகம்', 'Annapoorana Brahmin Mess', 'Mayilai Tea Town', 'Pizzaria', 'Rani Mess', 'KFC', 'Ibaco']
+\n================================================================================\nExecuting Query: 'ATM'\n================================================================================
+\nAPI RESPONSE: Returned 110 items.
+First 10 IDs: [272760, 272759, 287124, 287125, 287116, 303547, 281600, 303545, 303925, 281622]
+First 10 Names: ['Canara Bank', 'State Bank of India', 'Digi Zone', 'South Indian Bank', 'ICICI Bank', 'South Indian Bank', 'Federal Bank', 'ICICI Bank', 'City Union Bank', 'HDFC Bank']
+\n================================================================================\nExecuting Query: 'Fuel Station'\n================================================================================
+\nAPI RESPONSE: Returned 110 items.
+First 10 IDs: [314106, 314108, 313503, 314150, 314157, 313338, 312830, 314691, 311550, 311755]
+First 10 Names: ['Bharat Petroleum', 'Indian Oil', 'Indian Oil', 'Supergas', 'Trugaz Auto LPG', 'K. R. Fuels', 'Bharat Petroleum', 'Hindustan Petroleum', 'HP', 'HP']
+\n================================================================================\nExecuting Query: 'VIT'\n================================================================================
+\nAPI RESPONSE: Returned 19 items.
+First 10 IDs: [287375, 316760, 316761, 316373, 315260, 319240, 294555, 317079, 311095, 305843]
+First 10 Names: ['VIT', 'VIT Chennai Library', 'VIT pond', "VIT Women's Indoor Sports Room", 'VIT Lake', 'VIT Guest House', 'Vithagan Health Care Hospital', 'Vittal Temple', 'Vithya Vanitha Pallava Parameswarar', 'Vitva Ratna Villa Girls Higher Secondary School']
+\n================================================================================\nExecuting Query: 'Velachery'\n================================================================================
+\nAPI RESPONSE: Returned 7 items.
+First 10 IDs: [316344, None, None, 317809, None, None, None]
+First 10 Names: ['Tata Consultance Service, TCS', 'Velachery', 'Velachery', 'Park and Playground', 'Velachery', 'Velachery', 'Velachery']
+\n================================================================================\nExecuting Query: 'Tambaram'\n================================================================================
+\nAPI RESPONSE: Returned 3 items.
+First 10 IDs: [282241, None, None]
+First 10 Names: ['Pilayar Kovil', 'Tambaram', 'Tambaram']
+\n================================================================================\nExecuting Query: '600042'\n================================================================================
+\nAPI RESPONSE: Returned 58 items.
+First 10 IDs: [278342, 282557, 316904, 317202, 317507, 316344, 314004, 280106, 277545, 288688]
+First 10 Names: ['Velachery SABA Hospital', 'Sri Ayyanaar Store', 'Advent christian conference of india', 'Rednote', 'Perumal Temple', 'Tata Consultance Service, TCS', 'Diyamart', 'BSNL Exchange', 'Pazhamudhir Cholai', 'Helios Hospital Pvt Ltd']

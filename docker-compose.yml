@@ -1,0 +1,23 @@
+services:
+  nominatim:
+    image: mediagis/nominatim:5.3
+    container_name: nominatim
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+      - "5433:5432" # Expose PostgreSQL for development
+    shm_size: 2gb
+    environment:
+      PBF_PATH: /data/southern-zone-latest.osm.pbf
+    volumes:
+      - ./data:/data:ro
+      - postgres-data:/var/lib/postgresql/16/main
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 6
+      start_period: 5m
+
+volumes:
+  postgres-data:
